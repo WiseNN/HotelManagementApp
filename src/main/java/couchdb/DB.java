@@ -145,7 +145,7 @@ public class DB
 
                 keyValuePairInDoc = docHashMap.entrySet().stream().filter((entry) -> {
 
-                    if((key.equals(entry.getKey())) && (value.equals(entry.getValue()))) return true;
+                    if(( key.equals(entry.getKey())) && (value.equals(entry.getValue()))) return true;
 
                     return false;
 
