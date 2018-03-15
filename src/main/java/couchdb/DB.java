@@ -217,4 +217,36 @@ public class DB
     }
 
 
+
+    //This function looks for a document based on the provided name passed into the
+    //param, if no argument is specified this function will throw. If successfully found,
+    //a document will return the Map<K,V> form of the document in the database
+    Map<String, Object> readDocInDB(String withDocName)
+    {
+        Document removedDoc = null;
+        if((withDocName == "")||(withDocName == null))
+        {
+            //create formatted params string to display in console
+            String params = "--- Arguments ---\n\twithDocName: "+withDocName;
+
+            throw new IllegalArgumentException("Cannot pass a null or empty string value to this function\nCheck Params:\n\n"+params);
+        }
+        else{
+
+            Document currentDoc = allDB.getExistingDocument(withDocName);
+
+            if(currentDoc == null)
+            {
+                System.out.println(ConsoleColors.yellowText("A CouchBase Document with the name: "+withDocName+" already exists\nreturning null"));
+                return removedDoc.getProperties();
+            }
+            else
+            {
+                return currentDoc.getProperties();
+            }
+
+
+        }
+
+
 }
