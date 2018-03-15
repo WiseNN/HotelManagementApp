@@ -49,7 +49,12 @@ public class DB
                 }
 
                 Document updatedDoc = allDB.getExistingDocument(withDocName);
-                return updatedDoc.getProperties();
+
+
+                Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+                mutableCopy.putAll(updatedDoc.getProperties());
+                return mutableCopy;
 
             }
             else{
@@ -96,7 +101,10 @@ public class DB
             updatedDoc = allDB.getExistingDocument(withDocName);
         }
 
-        return updatedDoc.getProperties();
+        Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+        mutableCopy.putAll(updatedDoc.getProperties());
+        return mutableCopy;
     }
 
 
@@ -213,7 +221,10 @@ public class DB
 
         }
 
-        return removedDoc.getProperties();
+        Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+        mutableCopy.putAll(removedDoc.getProperties());
+        return mutableCopy;
     }
 
 
@@ -235,8 +246,13 @@ public class DB
             if (currentDoc == null) {
                 System.out.println(ConsoleColors.yellowText("A CouchBase Document with the name: " + withDocName + " already exists\nreturning null"));
                 return removedDoc.getProperties();
-            } else {
-                return allDB.getDocument(withDocName).getProperties();
+            }
+            else
+            {
+                Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+                mutableCopy.putAll(currentDoc.getProperties());
+                return mutableCopy;
             }
 
 
