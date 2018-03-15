@@ -205,7 +205,13 @@ public class DB
             if(currentDoc == null)
             {
                 System.out.println(ConsoleColors.yellowText("A CouchBase Document with the name: "+withDocName+" already exists\nreturning null"));
-                return removedDoc.getProperties();
+
+
+
+                Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+                mutableCopy.putAll(removedDoc.getProperties());
+                return mutableCopy;
             }
             else
             {
@@ -221,10 +227,7 @@ public class DB
 
         }
 
-        Map<String, Object> mutableCopy = new HashMap<String, Object>();
-
-        mutableCopy.putAll(removedDoc.getProperties());
-        return mutableCopy;
+        return  null;
     }
 
 
