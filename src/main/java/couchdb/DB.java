@@ -201,7 +201,7 @@ public class DB
         else{
 
             Document currentDoc = allDB.getExistingDocument(withDocName);
-            removedDoc = currentDoc;
+            removedDoc = currentDoc ;
             if(currentDoc == null)
             {
                 System.out.println(ConsoleColors.yellowText("A CouchBase Document with the name: "+withDocName+" already exists\nreturning null"));
